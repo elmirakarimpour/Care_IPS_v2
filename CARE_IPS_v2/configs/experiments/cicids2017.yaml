@@ -1,0 +1,5 @@
+dataset: CIC-IDS2017
+label_column: Label
+global_test_file: data/raw/CIC-IDS2017/Global test set.csv
+training_data_required: true
+note: Global test set must remain held out from all fitting and model selection.

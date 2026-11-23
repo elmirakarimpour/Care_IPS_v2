@@ -1,0 +1,32 @@
+experiment:
+  name: care_ips_baseline
+  random_seed: 42
+  label_column: Label
+
+data:
+  training_dir: data/raw/CIC-IDS2017/train
+  global_test: data/raw/CIC-IDS2017/Global test set.csv
+  test_is_never_used_for_fit: true
+  drop_infinite_and_missing: true
+
+preprocessing:
+  correlation_threshold: 0.98
+  scaler: standard
+  fit_scaler_on: train_only
+
+agents:
+  random_forest:
+    n_estimators: 200
+    random_state: 42
+
+cacm:
+  w1: 0.25
+  w2: 0.25
+  w3: 0.25
+  w4: 0.25
+  ir_threshold: 0.5
+  uncertainty_bound: 0.3
+
+sampling:
+  sample_size_per_file: 20000
+  random_seed: 42
