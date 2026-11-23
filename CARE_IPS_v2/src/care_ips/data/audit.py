@@ -73,10 +73,14 @@ def audit_csv(
             chunk[LABEL_COLUMN]
             .astype("string")
             .str.strip()
+            .fillna("<MISSING>")
             .value_counts(dropna=False)
         )
 
-        label_counts.update(labels.to_dict())
+        label_counts.update({
+            str(label): int(count)
+            for label, count in labels.items()
+        })
 
     return {
         "file_name": file_path.name,
