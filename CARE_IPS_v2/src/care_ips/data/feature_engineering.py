@@ -2,8 +2,10 @@ from dataclasses import dataclass
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
-LABEL_COL = "Label"
-NON_FEATURE_COLS = {LABEL_COL, "source_file"}
+from .contracts import LABEL_COLUMN, NON_FEATURE_COLUMNS
+
+LABEL_COL = LABEL_COLUMN
+NON_FEATURE_COLS = NON_FEATURE_COLUMNS
 
 def drop_constant_and_redundant(df: pd.DataFrame, corr_threshold: float = 0.98):
     features = [c for c in df.columns if c not in NON_FEATURE_COLS]
